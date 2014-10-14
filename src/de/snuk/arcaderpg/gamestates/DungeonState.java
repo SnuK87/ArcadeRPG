@@ -7,6 +7,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import de.snuk.arcaderpg.gameobjects.Enemy;
+import de.snuk.arcaderpg.gameobjects.Hero;
 import de.snuk.arcaderpg.gui.elements.Button;
 import de.snuk.arcaderpg.util.GameData;
 
@@ -24,10 +25,9 @@ public class DungeonState extends BasicGameState
 	public DungeonState(final Enemy e) throws SlickException
 	{
 		enemy = e;
-		System.out.println("miu");
-		btnAttack = new Button("Attack", 200, 600, 120, 40);
-		btnCast = new Button("Cast", 340, 600, 120, 40);
-		btnRest = new Button("Rest", 480, 600, 120, 40);
+		btnAttack = new Button("Attack", 200, 650, 120, 40);
+		btnCast = new Button("Cast", 340, 650, 120, 40);
+		btnRest = new Button("Rest", 480, 650, 120, 40);
 	}
 
 	@Override
@@ -41,9 +41,15 @@ public class DungeonState extends BasicGameState
 	public void render(final GameContainer container,
 			final StateBasedGame game, final Graphics g) throws SlickException
 	{
+		Hero hero = gameData.getHero();
+		
+		//enemy
 		g.drawString(enemy.getName(), 500, 50);
 		g.draw(enemy.getShape());
 
+		//hero
+		hero.rednerDungeon(g);
+		
 		// menu
 		btnAttack.render(g);
 		btnCast.render(g);

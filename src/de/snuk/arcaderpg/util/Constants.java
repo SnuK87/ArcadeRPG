@@ -19,6 +19,8 @@ public class Constants
 	 * UI Elements
 	 */
 
+	public static int UI_TILE_SIZE = 32;
+	
 	public static int UI_BUTTON_MENU_WIDTH = 120;
 	public static int UI_BUTTON_MENU_HEIGHT = 40;
 	

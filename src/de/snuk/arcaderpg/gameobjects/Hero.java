@@ -1,7 +1,10 @@
 package de.snuk.arcaderpg.gameobjects;
 
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
+
+import de.snuk.arcaderpg.util.Constants;
 
 public class Hero
 {
@@ -10,10 +13,15 @@ public class Hero
 	private int hp;
 	private int mp;
 
-	// graphic
+	// graphic world
 	private final Shape shape;
-	private int x;
-	private int y;
+	private int x; // position in tiles
+	private int y; // position in tiles
+	
+	//graphic dungeon
+//	private final shapeDungeon;
+	private int xDungeon;
+	private int yDungeon;
 
 	public Hero(final String name)
 	{
@@ -22,7 +30,7 @@ public class Hero
 		x = 0;
 		y = 9;
 
-		shape = new Rectangle(x * 32, y * 32, 32, 32);
+		shape = new Rectangle(x * Constants.UI_TILE_SIZE, y * Constants.UI_TILE_SIZE, Constants.UI_TILE_SIZE, Constants.UI_TILE_SIZE);
 	}
 
 	public String getName()
@@ -30,18 +38,32 @@ public class Hero
 		return name;
 	}
 
-	public Shape getShape()
-	{
+	public void renderWorld(Graphics g){
 		if (x >= 32)
 		{
-			shape.setX((x * 32) - 1024);
+			shape.setX((x * Constants.UI_TILE_SIZE) - 1024);
 		} else
 		{
-			shape.setX(x * 32);
+			shape.setX(x * Constants.UI_TILE_SIZE);
 		}
-		shape.setY(y * 32);
-		return shape;
+		
+		// scrolling für y achse
+		shape.setY(y * Constants.UI_TILE_SIZE);
+		
+		g.draw(shape);
 	}
+
+	
+	public void rednerDungeon(Graphics g){
+		
+		//position depends on how much heroes we have
+		xDungeon = 500;
+		yDungeon = 550;
+		
+		// size ?
+		g.drawRect(xDungeon, yDungeon, 32, 32);
+	}
+	
 
 	public int getX()
 	{

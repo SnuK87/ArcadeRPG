@@ -61,7 +61,7 @@ public class WorldState extends BasicGameState
 		btnMenu.render(g);
 
 		// draw objects
-		g.fill(hero.getShape());
+		hero.renderWorld(g);
 	}
 
 	@Override
