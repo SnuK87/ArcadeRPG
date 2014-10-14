@@ -23,13 +23,13 @@ public class StartMenuState extends BasicGameState
 			throws SlickException
 	{
 		btnStart = new Button("Start Game", container.getWidth() / 2 - 60, 200,
-				120, 40);
+				Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
 		btnLoadGame = new Button("Load Game", container.getWidth() / 2 - 60,
-				250, 120, 40);
+				250, Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
 		btnOptions = new Button("Options", container.getWidth() / 2 - 60, 300,
-				120, 40);
-		btnExit = new Button("Exit", container.getWidth() / 2 - 60, 350, 120,
-				40);
+				Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
+		btnExit = new Button("Exit", container.getWidth() / 2 - 60, 350, Constants.UI_BUTTON_MENU_WIDTH,
+				Constants.UI_BUTTON_MENU_HEIGHT);
 
 	}
 

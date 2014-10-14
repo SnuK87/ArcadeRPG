@@ -25,11 +25,11 @@ public class IngameMenu extends BasicGameState
 	public void init(final GameContainer container, final StateBasedGame sbg)
 			throws SlickException
 	{
-		btnSave = new Button("Save", 400, 350, 120, 40);
-		btnLoad = new Button("Load", 400, 250, 120, 40);
-		btnSettings = new Button("Settings", 400, 300, 120, 40);
-		btnExit = new Button("Exit", 400, 200, 120, 40);
-		btnBack = new Button("Back", 400, 400, 120, 40);
+		btnSave = new Button("Save", 400, 350, Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
+		btnLoad = new Button("Load", 400, 250, Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
+		btnSettings = new Button("Settings", 400, 300, Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
+		btnExit = new Button("Exit", 400, 200, Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
+		btnBack = new Button("Back", 400, 400, Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
 
 	}
 
@@ -82,7 +82,6 @@ public class IngameMenu extends BasicGameState
 	@Override
 	public int getID()
 	{
-		// TODO Auto-generated method stub
 		return 7;
 	}
 

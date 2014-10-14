@@ -30,8 +30,8 @@ public class WorldState extends BasicGameState
 	{
 		tileMap = new TiledMap("res\\world01.tmx");
 
-		btnInventory = new Button("Inventory", 100, 10, 120, 20);
-		btnMenu = new Button("Menu", 850, 10, 120, 20);
+		btnInventory = new Button("Inventory", 100, 10, Constants.UI_BUTTON_WORLD_WIDTH, Constants.UI_BUTTON_WORLD_HEIGHT);
+		btnMenu = new Button("Menu", 850, 10, Constants.UI_BUTTON_WORLD_WIDTH, Constants.UI_BUTTON_WORLD_HEIGHT);
 
 	}
 

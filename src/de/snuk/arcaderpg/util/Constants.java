@@ -19,7 +19,10 @@ public class Constants
 	 * UI Elements
 	 */
 
-	public static int UI_BUTTON_WIDTH = 120;
-	public static int UI_BUTTON_HEIGHT = 40;
-
+	public static int UI_BUTTON_MENU_WIDTH = 120;
+	public static int UI_BUTTON_MENU_HEIGHT = 40;
+	
+	public static int UI_BUTTON_WORLD_WIDTH = 120;
+	public static int UI_BUTTON_WORLD_HEIGHT = 20;
+	
 }
