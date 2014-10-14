@@ -127,9 +127,6 @@ public class WorldState extends BasicGameState
 						sbg.enterState(Constants.STATE_DUNGEON);
 					}
 				}
-
-				System.out.println(tileMap.getTileId(4, 4, levelLayerIndex));
-				System.out.println("StartFight!");
 			}
 		}
 

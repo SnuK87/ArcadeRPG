@@ -10,6 +10,7 @@ public class Hero
 {
 
 	private final String name;
+	private String clazz;
 	private int hp;
 	private int mp;
 
@@ -23,10 +24,11 @@ public class Hero
 	private int xDungeon;
 	private int yDungeon;
 
-	public Hero(final String name)
+	public Hero(final String name, String clazz)
 	{
 		this.name = name;
-
+		this.clazz = clazz;
+		
 		x = 0;
 		y = 9;
 
@@ -54,7 +56,7 @@ public class Hero
 	}
 
 	
-	public void rednerDungeon(Graphics g){
+	public void renderDungeon(Graphics g){
 		
 		//position depends on how much heroes we have
 		xDungeon = 500;
@@ -83,5 +85,9 @@ public class Hero
 	public void setY(final int y)
 	{
 		this.y = y;
+	}
+
+	public String getClazz() {
+		return clazz;
 	}
 }

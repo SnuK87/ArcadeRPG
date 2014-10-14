@@ -48,7 +48,7 @@ public class DungeonState extends BasicGameState
 		g.draw(enemy.getShape());
 
 		//hero
-		hero.rednerDungeon(g);
+		hero.renderDungeon(g);
 		
 		// menu
 		btnAttack.render(g);
