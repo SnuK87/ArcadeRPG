@@ -11,27 +11,47 @@ import org.newdawn.slick.tiled.TiledMap;
 import de.snuk.arcaderpg.gameobjects.Dungeon;
 import de.snuk.arcaderpg.gameobjects.Hero;
 import de.snuk.arcaderpg.gui.elements.Button;
-import de.snuk.arcaderpg.setup.StateManager;
 import de.snuk.arcaderpg.util.Constants;
 import de.snuk.arcaderpg.util.GameData;
+import de.snuk.arcaderpg.util.StaticGameData;
 
 public class WorldState extends BasicGameState
 {
 
 	private final GameData gameData = GameData.getInstance();
+	private final StaticGameData staticData = StaticGameData.getInstance();
 
 	private TiledMap tileMap;
 	private Button btnInventory;
 	private Button btnMenu;
 
+	private int objectCount = 0;
+
 	@Override
 	public void init(final GameContainer container, final StateBasedGame sbg)
 			throws SlickException
 	{
-		tileMap = new TiledMap("res\\world01.tmx");
+		tileMap = new TiledMap("res\\world01_test.tmx");
 
-		btnInventory = new Button("Inventory", 100, 10, Constants.UI_BUTTON_WORLD_WIDTH, Constants.UI_BUTTON_WORLD_HEIGHT);
-		btnMenu = new Button("Menu", 850, 10, Constants.UI_BUTTON_WORLD_WIDTH, Constants.UI_BUTTON_WORLD_HEIGHT);
+		// final int objectGroupCount = tileMap.getObjectGroupCount();
+
+		objectCount = tileMap.getObjectCount(0);
+
+		// for (int i = 0; i < objectGroupCount; i++)
+		// {
+		// for (int j = 0; j < tileMap.getObjectCount(i); j++)
+		// {
+		//
+		// System.out.println(tileMap.getObjectName(i, j));
+		// System.out.println(tileMap.getObjectType(i, j));
+		// }
+		// }
+
+		btnInventory = new Button("Inventory", 100, 10,
+				Constants.UI_BUTTON_WORLD_WIDTH,
+				Constants.UI_BUTTON_WORLD_HEIGHT);
+		btnMenu = new Button("Menu", 850, 10, Constants.UI_BUTTON_WORLD_WIDTH,
+				Constants.UI_BUTTON_WORLD_HEIGHT);
 
 	}
 
@@ -95,7 +115,6 @@ public class WorldState extends BasicGameState
 		final Hero hero = gameData.getHero();
 
 		final int pathLayerIndex = tileMap.getLayerIndex("path");
-		final int levelLayerIndex = tileMap.getLayerIndex("level");
 
 		final int heroY = hero.getY();
 		final int heroX = hero.getX();
@@ -107,6 +126,23 @@ public class WorldState extends BasicGameState
 				hero.setX(heroX + 1);
 				gameData.setHero(hero);
 			}
+
+			for (int i = 0; i < objectCount; i++)
+			{
+				final int d1 = tileMap.getObjectX(0, i);
+				final int d2 = tileMap.getObjectY(0, i);
+
+				if (((heroX + 1) >= (d1 / 32) && (heroX + 1) <= (d1 / 32) + 1)
+						&& (heroY >= (d2 / 32) && heroY <= (d2 / 32) + 1))
+				{
+
+					final Dungeon d = staticData.getDungeon(tileMap
+							.getObjectName(0, i));
+
+					DungeonState.setDungeon(d);
+					sbg.enterState(Constants.STATE_DUNGEON);
+				}
+			}
 		}
 
 		if (input.isKeyPressed(Input.KEY_LEFT))
@@ -117,15 +153,27 @@ public class WorldState extends BasicGameState
 				gameData.setHero(hero);
 			}
 
-			if (tileMap.getTileId(heroX - 1, heroY, levelLayerIndex) != 0)
+			// System.out.println("HeroX: " + heroX);
+			// System.out.println("HeroY: " + heroY);
+
+			for (int i = 0; i < objectCount; i++)
 			{
-				for (final Dungeon d : StateManager.dungeons)
+				final int d1 = tileMap.getObjectX(0, i);
+				final int d2 = tileMap.getObjectY(0, i);
+
+				// System.out.println("Object " + i + " : X=" + d1 / 32 + " Y="
+				// + d2 / 32 + " w=" + tileMap.getObjectWidth(0, i)
+				// + " h=" + tileMap.getObjectHeight(0, i));
+
+				if (((heroX - 1) >= (d1 / 32) && (heroX - 1) <= (d1 / 32) + 1)
+						&& (heroY >= (d2 / 32) && heroY <= (d2 / 32) + 1))
 				{
-					if (d.getShape().includes(heroX * 32, heroY * 32))
-					{
-						sbg.addState(new DungeonState(d.getEnemy()));
-						sbg.enterState(Constants.STATE_DUNGEON);
-					}
+
+					final Dungeon d = staticData.getDungeon(tileMap
+							.getObjectName(0, i));
+
+					DungeonState.setDungeon(d);
+					sbg.enterState(Constants.STATE_DUNGEON);
 				}
 			}
 		}
@@ -138,19 +186,22 @@ public class WorldState extends BasicGameState
 				gameData.setHero(hero);
 			}
 
-			if (tileMap.getTileId(heroX, heroY - 1, levelLayerIndex) != 0)
+			for (int i = 0; i < objectCount; i++)
 			{
-				for (final Dungeon d : StateManager.dungeons)
+				final int d1 = tileMap.getObjectX(0, i);
+				final int d2 = tileMap.getObjectY(0, i);
+
+				if (((heroY - 1) >= (d2 / 32) && (heroY - 1) <= (d2 / 32) + 1)
+						&& (heroX >= (d1 / 32) && heroX <= ((d1 / 32) + 1)))
 				{
-					if (d.getShape().includes(heroX * 32, heroY * 32))
-					{
-						sbg.addState(new DungeonState(d.getEnemy()));
-						sbg.enterState(Constants.STATE_DUNGEON);
-					}
+
+					final Dungeon d = staticData.getDungeon(tileMap
+							.getObjectName(0, i));
+
+					DungeonState.setDungeon(d);
+					sbg.enterState(Constants.STATE_DUNGEON);
 				}
 
-				System.out.println(tileMap.getTileId(4, 4, levelLayerIndex));
-				System.out.println("StartFight!");
 			}
 		}
 		if (input.isKeyPressed(Input.KEY_DOWN))

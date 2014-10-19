@@ -4,35 +4,43 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
 
+import de.snuk.arcaderpg.gameobjects.model.Attributes;
 import de.snuk.arcaderpg.util.Constants;
 
 public class Hero
 {
-
+	// attributes
 	private final String name;
-	private String clazz;
-	private int hp;
-	private int mp;
+	private final String clazz;
+	private Attributes stats;
+	private int level;
+	private int experience;
 
 	// graphic world
 	private final Shape shape;
 	private int x; // position in tiles
 	private int y; // position in tiles
-	
-	//graphic dungeon
-//	private final shapeDungeon;
+
+	// graphic dungeon
+	// private final shapeDungeon;
 	private int xDungeon;
 	private int yDungeon;
 
-	public Hero(final String name, String clazz)
+	public Hero(final String name, final String clazz, final Attributes stats)
 	{
 		this.name = name;
 		this.clazz = clazz;
-		
+
+		level = 1;
+		experience = 0;
+		this.stats = stats;
+
 		x = 0;
 		y = 9;
 
-		shape = new Rectangle(x * Constants.UI_TILE_SIZE, y * Constants.UI_TILE_SIZE, Constants.UI_TILE_SIZE, Constants.UI_TILE_SIZE);
+		shape = new Rectangle(x * Constants.UI_TILE_SIZE, y
+				* Constants.UI_TILE_SIZE, Constants.UI_TILE_SIZE,
+				Constants.UI_TILE_SIZE);
 	}
 
 	public String getName()
@@ -40,7 +48,8 @@ public class Hero
 		return name;
 	}
 
-	public void renderWorld(Graphics g){
+	public void renderWorld(final Graphics g)
+	{
 		if (x >= 32)
 		{
 			shape.setX((x * Constants.UI_TILE_SIZE) - 1024);
@@ -48,24 +57,23 @@ public class Hero
 		{
 			shape.setX(x * Constants.UI_TILE_SIZE);
 		}
-		
+
 		// scrolling für y achse
 		shape.setY(y * Constants.UI_TILE_SIZE);
-		
+
 		g.draw(shape);
 	}
 
-	
-	public void renderDungeon(Graphics g){
-		
-		//position depends on how much heroes we have
+	public void renderDungeon(final Graphics g)
+	{
+
+		// position depends on how much heroes we have
 		xDungeon = 500;
 		yDungeon = 550;
-		
+
 		// size ?
 		g.drawRect(xDungeon, yDungeon, 32, 32);
 	}
-	
 
 	public int getX()
 	{
@@ -87,7 +95,38 @@ public class Hero
 		this.y = y;
 	}
 
-	public String getClazz() {
+	public String getClazz()
+	{
 		return clazz;
+	}
+
+	public Attributes getStats()
+	{
+		return stats;
+	}
+
+	public void setStats(final Attributes stats)
+	{
+		this.stats = stats;
+	}
+
+	public int getLevel()
+	{
+		return level;
+	}
+
+	public void setLevel(final int level)
+	{
+		this.level = level;
+	}
+
+	public int getExperience()
+	{
+		return experience;
+	}
+
+	public void setExperience(final int experience)
+	{
+		this.experience = experience;
 	}
 }

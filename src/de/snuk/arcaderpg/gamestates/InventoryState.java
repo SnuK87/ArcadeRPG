@@ -7,11 +7,16 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import de.snuk.arcaderpg.gameobjects.Hero;
+import de.snuk.arcaderpg.gameobjects.model.Attributes;
 import de.snuk.arcaderpg.gui.elements.Button;
 import de.snuk.arcaderpg.util.Constants;
+import de.snuk.arcaderpg.util.GameData;
 
 public class InventoryState extends BasicGameState
 {
+
+	private final GameData gameData = GameData.getInstance();
 
 	private Button btnBack;
 
@@ -27,6 +32,26 @@ public class InventoryState extends BasicGameState
 			final Graphics g) throws SlickException
 	{
 		g.drawString("Invetory", 400, 50);
+		final Hero hero = gameData.getHero();
+		final Attributes stats = hero.getStats();
+
+		// draw stats
+		g.drawString("Name: " + hero.getName(), 200, 150);
+		g.drawString("Class: " + hero.getClazz(), 200, 175);
+		g.drawString("Level: " + hero.getLevel(), 200, 200);
+		g.drawString("EXP: " + hero.getExperience(), 200, 225);
+		g.drawString("HP: " + stats.getHp(), 200, 250);
+		g.drawString("MP: " + stats.getMp(), 200, 275);
+		g.drawString("Strength: " + stats.getStrength(), 200, 300);
+		g.drawString("Dexterity: " + stats.getDexterity(), 200, 325);
+		g.drawString("Intelligence: " + stats.getIntelligence(), 200, 350);
+		g.drawString("Vitality: " + stats.getVitality(), 200, 375);
+		g.drawString("Crit. Chance: " + stats.getCrit_chance() + " %", 200, 400);
+		g.drawString("Crit. Damage: " + stats.getCrit_damage() + " %", 200, 425);
+
+		// draw inventory
+
+		// draw backpack
 
 		btnBack.render(g);
 	}

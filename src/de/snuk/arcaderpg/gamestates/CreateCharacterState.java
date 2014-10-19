@@ -1,8 +1,5 @@
 package de.snuk.arcaderpg.gamestates;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -12,14 +9,17 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import de.snuk.arcaderpg.gameobjects.Hero;
+import de.snuk.arcaderpg.gameobjects.model.Attributes;
 import de.snuk.arcaderpg.gui.elements.Button;
 import de.snuk.arcaderpg.util.Constants;
 import de.snuk.arcaderpg.util.GameData;
+import de.snuk.arcaderpg.util.StaticGameData;
 
 public class CreateCharacterState extends BasicGameState
 {
 
 	private final GameData gameData = GameData.getInstance();
+	private final StaticGameData staticData = StaticGameData.getInstance();
 
 	private TextField tf;
 	private Button btnOk;
@@ -39,7 +39,6 @@ public class CreateCharacterState extends BasicGameState
 	{
 		choice = 0;
 
-
 		tf = new TextField(container, container.getDefaultFont(), 400, 300,
 				150, 20);
 		btnOk = new Button("Ok", 400, 400, 40, 20);
@@ -58,9 +57,7 @@ public class CreateCharacterState extends BasicGameState
 		tf.setFocus(true);
 
 		g.drawString("Class: ", 350, 350);
-		g.drawString(gameData.getClasses().get(choice), 420, 350);
-		
-		
+		g.drawString(staticData.getClasses().get(choice), 420, 350);
 
 		btnNext.render(g);
 		btnOk.render(g);
@@ -79,7 +76,10 @@ public class CreateCharacterState extends BasicGameState
 		{
 			if (btnOk.isClicked(mouseX, mouseY))
 			{
-				final Hero hero = new Hero(tf.getText(), gameData.getClasses().get(choice));
+				final String clazz = staticData.getClasses().get(choice);
+				final Attributes stats = staticData.getStatsForClass(clazz);
+
+				final Hero hero = new Hero(tf.getText(), clazz, stats);
 				gameData.setHero(hero);
 				tf.setText("");
 				sbg.enterState(Constants.STATE_WORLD);
@@ -95,7 +95,7 @@ public class CreateCharacterState extends BasicGameState
 
 			if (btnNext.isClicked(mouseX, mouseY))
 			{
-				if (choice == gameData.getClasses().size() - 1)
+				if (choice == staticData.getClasses().size() - 1)
 				{
 					choice = 0;
 				} else
