@@ -11,25 +11,33 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import de.snuk.arcaderpg.gui.elements.Button;
 import de.snuk.arcaderpg.util.Constants;
+import de.snuk.arcaderpg.util.GameData;
 
 public class IngameMenu extends BasicGameState
 {
 
-	Button btnSave;
-	Button btnLoad;
-	Button btnSettings;
-	Button btnExit;
-	Button btnBack;
+	private final GameData gameData = GameData.getInstance();
+
+	private Button btnSave;
+	private Button btnLoad;
+	private Button btnSettings;
+	private Button btnExit;
+	private Button btnBack;
 
 	@Override
 	public void init(final GameContainer container, final StateBasedGame sbg)
 			throws SlickException
 	{
-		btnSave = new Button("Save", 400, 350, Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
-		btnLoad = new Button("Load", 400, 250, Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
-		btnSettings = new Button("Settings", 400, 300, Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
-		btnExit = new Button("Exit", 400, 200, Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
-		btnBack = new Button("Back", 400, 400, Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
+		btnSave = new Button("Save", 400, 350, Constants.UI_BUTTON_MENU_WIDTH,
+				Constants.UI_BUTTON_MENU_HEIGHT);
+		btnLoad = new Button("Load", 400, 250, Constants.UI_BUTTON_MENU_WIDTH,
+				Constants.UI_BUTTON_MENU_HEIGHT);
+		btnSettings = new Button("Settings", 400, 300,
+				Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
+		btnExit = new Button("Exit", 400, 200, Constants.UI_BUTTON_MENU_WIDTH,
+				Constants.UI_BUTTON_MENU_HEIGHT);
+		btnBack = new Button("Back", 400, 400, Constants.UI_BUTTON_MENU_WIDTH,
+				Constants.UI_BUTTON_MENU_HEIGHT);
 
 	}
 
@@ -57,7 +65,8 @@ public class IngameMenu extends BasicGameState
 		{
 			if (btnSave.isClicked(mouseX, mouseY))
 			{
-
+				gameData.serializeHero();
+				System.out.println("Saved Game!");
 			}
 			if (btnLoad.isClicked(mouseX, mouseY))
 			{

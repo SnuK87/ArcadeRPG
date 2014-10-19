@@ -1,5 +1,7 @@
 package de.snuk.arcaderpg.gameobjects;
 
+import java.io.Serializable;
+
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
@@ -7,8 +9,12 @@ import org.newdawn.slick.geom.Shape;
 import de.snuk.arcaderpg.gameobjects.model.Attributes;
 import de.snuk.arcaderpg.util.Constants;
 
-public class Hero
+public class Hero implements Serializable
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2011511662065864152L;
 	// attributes
 	private final String name;
 	private final String clazz;

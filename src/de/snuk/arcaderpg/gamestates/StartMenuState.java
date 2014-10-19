@@ -9,9 +9,12 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import de.snuk.arcaderpg.gui.elements.Button;
 import de.snuk.arcaderpg.util.Constants;
+import de.snuk.arcaderpg.util.GameData;
 
 public class StartMenuState extends BasicGameState
 {
+
+	private final GameData gameData = GameData.getInstance();
 
 	private Button btnStart;
 	private Button btnLoadGame;
@@ -25,11 +28,12 @@ public class StartMenuState extends BasicGameState
 		btnStart = new Button("Start Game", container.getWidth() / 2 - 60, 200,
 				Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
 		btnLoadGame = new Button("Load Game", container.getWidth() / 2 - 60,
-				250, Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
+				250, Constants.UI_BUTTON_MENU_WIDTH,
+				Constants.UI_BUTTON_MENU_HEIGHT);
 		btnOptions = new Button("Options", container.getWidth() / 2 - 60, 300,
 				Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
-		btnExit = new Button("Exit", container.getWidth() / 2 - 60, 350, Constants.UI_BUTTON_MENU_WIDTH,
-				Constants.UI_BUTTON_MENU_HEIGHT);
+		btnExit = new Button("Exit", container.getWidth() / 2 - 60, 350,
+				Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
 
 	}
 
@@ -60,7 +64,8 @@ public class StartMenuState extends BasicGameState
 
 			if (btnLoadGame.isClicked(mouseX, mouseY))
 			{
-				// t0d0
+				gameData.deserializeHero();
+				sbg.enterState(Constants.STATE_WORLD);
 			}
 
 			if (btnOptions.isClicked(mouseX, mouseY))
