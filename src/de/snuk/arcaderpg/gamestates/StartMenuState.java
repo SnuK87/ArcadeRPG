@@ -25,14 +25,17 @@ public class StartMenuState extends BasicGameState
 	public void init(final GameContainer container, final StateBasedGame sbg)
 			throws SlickException
 	{
-		btnStart = new Button("Start Game", container.getWidth() / 2 - 60, 200,
+		btnStart = new Button("Start Game", container.getWidth() / 2
+				- (Constants.UI_BUTTON_MENU_WIDTH / 2), 200,
 				Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
-		btnLoadGame = new Button("Load Game", container.getWidth() / 2 - 60,
-				250, Constants.UI_BUTTON_MENU_WIDTH,
-				Constants.UI_BUTTON_MENU_HEIGHT);
-		btnOptions = new Button("Options", container.getWidth() / 2 - 60, 300,
+		btnLoadGame = new Button("Load Game", container.getWidth() / 2
+				- (Constants.UI_BUTTON_MENU_WIDTH / 2), 275,
 				Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
-		btnExit = new Button("Exit", container.getWidth() / 2 - 60, 350,
+		btnOptions = new Button("Options", container.getWidth() / 2
+				- (Constants.UI_BUTTON_MENU_WIDTH / 2), 350,
+				Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
+		btnExit = new Button("Exit", container.getWidth() / 2
+				- (Constants.UI_BUTTON_MENU_WIDTH / 2), 425,
 				Constants.UI_BUTTON_MENU_WIDTH, Constants.UI_BUTTON_MENU_HEIGHT);
 
 	}

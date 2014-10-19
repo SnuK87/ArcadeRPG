@@ -8,7 +8,6 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.tiled.TiledMap;
 
-import de.snuk.arcaderpg.gameobjects.Dungeon;
 import de.snuk.arcaderpg.gameobjects.Hero;
 import de.snuk.arcaderpg.gui.elements.Button;
 import de.snuk.arcaderpg.util.Constants;
@@ -135,12 +134,17 @@ public class WorldState extends BasicGameState
 				if (((heroX + 1) >= (d1 / 32) && (heroX + 1) <= (d1 / 32) + 1)
 						&& (heroY >= (d2 / 32) && heroY <= (d2 / 32) + 1))
 				{
+					if (staticData.getDungeon(tileMap.getObjectName(0, i))
+							.getEnemy().getCurrentHp() > 0)
+					{
+						gameData.setCurrentDungeon(tileMap.getObjectName(0, i));
+						sbg.enterState(Constants.STATE_DUNGEON);
 
-					final Dungeon d = staticData.getDungeon(tileMap
-							.getObjectName(0, i));
-
-					DungeonState.setDungeon(d);
-					sbg.enterState(Constants.STATE_DUNGEON);
+					} else
+					{
+						System.out.println(tileMap.getObjectName(0, i)
+								+ "ist schon besiegt");
+					}
 				}
 			}
 		}
@@ -168,12 +172,17 @@ public class WorldState extends BasicGameState
 				if (((heroX - 1) >= (d1 / 32) && (heroX - 1) <= (d1 / 32) + 1)
 						&& (heroY >= (d2 / 32) && heroY <= (d2 / 32) + 1))
 				{
+					if (staticData.getDungeon(tileMap.getObjectName(0, i))
+							.getEnemy().getCurrentHp() > 0)
+					{
+						gameData.setCurrentDungeon(tileMap.getObjectName(0, i));
+						sbg.enterState(Constants.STATE_DUNGEON);
 
-					final Dungeon d = staticData.getDungeon(tileMap
-							.getObjectName(0, i));
-
-					DungeonState.setDungeon(d);
-					sbg.enterState(Constants.STATE_DUNGEON);
+					} else
+					{
+						System.out.println(tileMap.getObjectName(0, i)
+								+ "ist schon besiegt");
+					}
 				}
 			}
 		}
@@ -194,12 +203,17 @@ public class WorldState extends BasicGameState
 				if (((heroY - 1) >= (d2 / 32) && (heroY - 1) <= (d2 / 32) + 1)
 						&& (heroX >= (d1 / 32) && heroX <= ((d1 / 32) + 1)))
 				{
+					if (staticData.getDungeon(tileMap.getObjectName(0, i))
+							.getEnemy().getCurrentHp() > 0)
+					{
+						gameData.setCurrentDungeon(tileMap.getObjectName(0, i));
+						sbg.enterState(Constants.STATE_DUNGEON);
 
-					final Dungeon d = staticData.getDungeon(tileMap
-							.getObjectName(0, i));
-
-					DungeonState.setDungeon(d);
-					sbg.enterState(Constants.STATE_DUNGEON);
+					} else
+					{
+						System.out.println(tileMap.getObjectName(0, i)
+								+ "ist schon besiegt");
+					}
 				}
 
 			}

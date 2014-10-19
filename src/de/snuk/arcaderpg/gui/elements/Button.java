@@ -3,6 +3,7 @@ package de.snuk.arcaderpg.gui.elements;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Point;
 import org.newdawn.slick.geom.Rectangle;
@@ -19,24 +20,51 @@ public class Button
 	private final float y;
 	private final Shape shape;
 
+	private final Image image;
+
 	public Button(final String text, final float x, final float y,
 			final float width, final float height) throws SlickException
 	{
 		this.text = text;
 		this.x = x;
 		this.y = y;
-		this.width = width;
-		this.height = height;
+
+		image = new Image("res\\button.png");
+
+		this.width = image.getWidth();
+		this.height = image.getHeight();
+
+		System.out.println(this.width);
+		System.out.println(this.height);
+
+		shape = new Rectangle(x, y, this.width, this.height);
+	}
+
+	public Button(final String text, final float x, final float y,
+			final Image image) throws SlickException
+	{
+		this.text = text;
+		this.x = x;
+		this.y = y;
+
+		this.image = image;
+
+		width = image.getWidth();
+		height = image.getHeight();
+
+		System.out.println(width);
+		System.out.println(height);
 
 		shape = new Rectangle(x, y, width, height);
 	}
 
 	public void render(final Graphics g) throws SlickException
 	{
-		g.setColor(Color.cyan);
+		g.drawImage(image, x, y);
+		g.setColor(Color.white);
 		g.drawString(text, (x + width / 2) - text.length() * 5, y
 				+ (height / 4));
-		g.drawRect(x, y, width, height);
+		// g.drawRect(x, y, width, height);
 
 	}
 

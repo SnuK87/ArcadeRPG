@@ -59,22 +59,22 @@ public class StaticGameData
 		final Attributes stats = new Attributes();
 		stats.setHp(100);
 		stats.setMp(0);
-		stats.setStrength(50);
+		stats.setStrength(25);
 		stats.setIntelligence(10);
 		stats.setDexterity(10);
 		stats.setVitality(20);
 		stats.setCrit_chance(0);
 		stats.setCrit_damage(0);
 
-		final Enemy boss = new Enemy("Klaus", stats);
+		final Enemy boss = new Enemy("Klaus", stats, 10);
 		final Dungeon dungeon = new Dungeon(boss, "level1");
 		dungeons.add(dungeon);
 
-		final Enemy boss2 = new Enemy("Gerd", stats);
+		final Enemy boss2 = new Enemy("Gerd", stats, 12);
 		final Dungeon dungeon2 = new Dungeon(boss2, "level2");
 		dungeons.add(dungeon2);
 
-		final Enemy boss3 = new Enemy("Peter", stats);
+		final Enemy boss3 = new Enemy("Peter", stats, 15);
 		final Dungeon dungeon3 = new Dungeon(boss3, "level3");
 		dungeons.add(dungeon3);
 	}

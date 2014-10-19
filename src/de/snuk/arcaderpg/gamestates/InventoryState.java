@@ -52,6 +52,7 @@ public class InventoryState extends BasicGameState
 		// draw inventory
 
 		// draw backpack
+		g.drawString("Gold: " + hero.getBackPack().getGold(), 600, 150);
 
 		btnBack.render(g);
 	}

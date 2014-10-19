@@ -2,6 +2,7 @@ package de.snuk.arcaderpg.gamestates;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.TextField;
@@ -41,9 +42,11 @@ public class CreateCharacterState extends BasicGameState
 
 		tf = new TextField(container, container.getDefaultFont(), 400, 300,
 				150, 20);
-		btnOk = new Button("Ok", 400, 400, 40, 20);
-		btnCancel = new Button("Cancel", 500, 400, 40, 20);
-		btnNext = new Button("->", 500, 350, 20, 20);
+		final Image imgRight = new Image("res\\arrowBlue_right.png");
+		final Image imgLeft = new Image("res\\arrowBlue_left.png");
+		btnOk = new Button("", 500, 400, imgRight);
+		btnCancel = new Button("", 400, 400, imgLeft);
+		btnNext = new Button("", 500, 350, imgRight);
 
 	}
 

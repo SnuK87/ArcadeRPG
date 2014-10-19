@@ -13,6 +13,8 @@ public class GameData
 	private static GameData instance;
 	private Hero hero;
 
+	private String currentDungeon;
+
 	// private int dungeonsCompleted;
 
 	private GameData()
@@ -38,6 +40,16 @@ public class GameData
 	public void setHero(final Hero hero)
 	{
 		this.hero = hero;
+	}
+
+	public String getCurrentDungeon()
+	{
+		return currentDungeon;
+	}
+
+	public void setCurrentDungeon(final String currentDungeon)
+	{
+		this.currentDungeon = currentDungeon;
 	}
 
 	public void serializeHero()

@@ -6,6 +6,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import de.snuk.arcaderpg.gamestates.CreateCharacterState;
 import de.snuk.arcaderpg.gamestates.DungeonState;
+import de.snuk.arcaderpg.gamestates.GameOverState;
 import de.snuk.arcaderpg.gamestates.IngameMenu;
 import de.snuk.arcaderpg.gamestates.InventoryState;
 import de.snuk.arcaderpg.gamestates.StartMenuState;
@@ -29,5 +30,6 @@ public class StateManager extends StateBasedGame
 		addState(new InventoryState());
 		addState(new IngameMenu());
 		addState(new DungeonState());
+		addState(new GameOverState());
 	}
 }

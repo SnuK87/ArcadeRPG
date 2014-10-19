@@ -7,6 +7,8 @@ import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
 
 import de.snuk.arcaderpg.gameobjects.model.Attributes;
+import de.snuk.arcaderpg.gameobjects.model.BackPack;
+import de.snuk.arcaderpg.gameobjects.model.Inventory;
 import de.snuk.arcaderpg.util.Constants;
 
 public class Hero implements Serializable
@@ -21,6 +23,11 @@ public class Hero implements Serializable
 	private Attributes stats;
 	private int level;
 	private int experience;
+
+	private int currentHp;
+
+	private final BackPack backPack;
+	private final Inventory inventory;
 
 	// graphic world
 	private final Shape shape;
@@ -40,6 +47,10 @@ public class Hero implements Serializable
 		level = 1;
 		experience = 0;
 		this.stats = stats;
+		backPack = new BackPack();
+		inventory = new Inventory();
+
+		currentHp = stats.getHp();
 
 		x = 0;
 		y = 9;
@@ -135,4 +146,35 @@ public class Hero implements Serializable
 	{
 		this.experience = experience;
 	}
+
+	public int getCurrentHp()
+	{
+		return currentHp;
+	}
+
+	public void setCurrentHp(final int currentHp)
+	{
+		this.currentHp = currentHp;
+	}
+
+	public int getxDungeon()
+	{
+		return xDungeon;
+	}
+
+	public int getyDungeon()
+	{
+		return yDungeon;
+	}
+
+	public BackPack getBackPack()
+	{
+		return backPack;
+	}
+
+	public Inventory getInventory()
+	{
+		return inventory;
+	}
+
 }

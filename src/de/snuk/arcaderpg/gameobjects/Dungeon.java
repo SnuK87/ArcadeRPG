@@ -1,6 +1,5 @@
 package de.snuk.arcaderpg.gameobjects;
 
-
 public class Dungeon
 {
 	private final Enemy enemy;

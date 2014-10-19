@@ -15,14 +15,16 @@ public class Constants
 
 	public static int STATE_DUNGEON = 10;
 
+	public static int STATE_GAMEOVER = 15;
+
 	/*
 	 * UI Elements
 	 */
 
 	public static int UI_TILE_SIZE = 32;
 
-	public static int UI_BUTTON_MENU_WIDTH = 120;
-	public static int UI_BUTTON_MENU_HEIGHT = 40;
+	public static int UI_BUTTON_MENU_WIDTH = 190;
+	public static int UI_BUTTON_MENU_HEIGHT = 49;
 
 	public static int UI_BUTTON_WORLD_WIDTH = 120;
 	public static int UI_BUTTON_WORLD_HEIGHT = 20;
