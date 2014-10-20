@@ -154,19 +154,6 @@ public class DungeonState extends BasicGameState
 		}
 	}
 
-	// public static void setDungeon(final Dungeon d)
-	// {
-	// dungeon = d;
-	//
-	// initFight(d.getEnemy());
-	//
-	// }
-	//
-	// private static void initFight(final Enemy e)
-	// {
-	// fightController = new FightController(gameData.getHero(), e);
-	// }
-
 	@Override
 	public void enter(final GameContainer container, final StateBasedGame game)
 	{

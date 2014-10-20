@@ -34,9 +34,6 @@ public class Button
 		this.width = image.getWidth();
 		this.height = image.getHeight();
 
-		System.out.println(this.width);
-		System.out.println(this.height);
-
 		shape = new Rectangle(x, y, this.width, this.height);
 	}
 
@@ -52,9 +49,6 @@ public class Button
 		width = image.getWidth();
 		height = image.getHeight();
 
-		System.out.println(width);
-		System.out.println(height);
-
 		shape = new Rectangle(x, y, width, height);
 	}
 
@@ -64,8 +58,6 @@ public class Button
 		g.setColor(Color.white);
 		g.drawString(text, (x + width / 2) - text.length() * 5, y
 				+ (height / 4));
-		// g.drawRect(x, y, width, height);
-
 	}
 
 	public void update(final GameContainer container, final StateBasedGame sbg,

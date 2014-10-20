@@ -9,6 +9,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import de.snuk.arcaderpg.gameobjects.Hero;
 import de.snuk.arcaderpg.gameobjects.model.Attributes;
+import de.snuk.arcaderpg.gameobjects.model.Item;
 import de.snuk.arcaderpg.gui.elements.Button;
 import de.snuk.arcaderpg.util.Constants;
 import de.snuk.arcaderpg.util.GameData;
@@ -50,9 +51,18 @@ public class InventoryState extends BasicGameState
 		g.drawString("Crit. Damage: " + stats.getCrit_damage() + " %", 200, 425);
 
 		// draw inventory
+		g.drawString("Weapon: " + hero.getInventory().getWeapon(), 450, 150);
+
+		int k = 150;
+
+		for (final Item i : hero.getInventory().getItems())
+		{
+			k += 25;
+			g.drawString("Item: " + i.getName(), 450, k);
+		}
 
 		// draw backpack
-		g.drawString("Gold: " + hero.getBackPack().getGold(), 600, 150);
+		g.drawString("Gold: " + hero.getBackPack().getGold(), 800, 150);
 
 		btnBack.render(g);
 	}
