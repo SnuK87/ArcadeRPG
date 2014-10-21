@@ -1,5 +1,6 @@
 package de.snuk.arcaderpg.gamestates;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
@@ -43,11 +44,11 @@ public class StartMenuState extends BasicGameState
 	@Override
 	public void render(final GameContainer container, final StateBasedGame sbg,
 			final Graphics g) throws SlickException
-	{
-		btnStart.render(g);
-		btnLoadGame.render(g);
-		btnOptions.render(g);
-		btnExit.render(g);
+	{		
+		btnStart.render(g, container.getInput());
+		btnLoadGame.render(g, container.getInput());
+		btnOptions.render(g, container.getInput());
+		btnExit.render(g, container.getInput());
 	}
 
 	@Override

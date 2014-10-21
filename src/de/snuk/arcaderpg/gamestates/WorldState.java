@@ -76,8 +76,8 @@ public class WorldState extends BasicGameState
 		}
 
 		// menu
-		btnInventory.render(g);
-		btnMenu.render(g);
+		btnInventory.render(g, container.getInput());
+		btnMenu.render(g, container.getInput());
 
 		// draw objects
 		hero.renderWorld(g);

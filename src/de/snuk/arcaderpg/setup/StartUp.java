@@ -11,7 +11,7 @@ public class StartUp
 		{
 			final AppGameContainer app = new AppGameContainer(new StateManager(
 					"ArcadeRPG"));
-			app.setDisplayMode(1024, 768, false);
+			app.setDisplayMode(1024, 768, true);
 			app.setAlwaysRender(true);
 			app.setTargetFrameRate(90);
 			// app.setVSync(true);

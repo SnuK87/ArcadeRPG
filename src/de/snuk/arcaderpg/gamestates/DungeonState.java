@@ -60,9 +60,9 @@ public class DungeonState extends BasicGameState
 		// menu
 		if (fightController.isMyTurn())
 		{
-			btnAttack.render(g);
-			btnCast.render(g);
-			btnRest.render(g);
+			btnAttack.render(g, container.getInput());
+			btnCast.render(g, container.getInput());
+			btnRest.render(g, container.getInput());
 		}
 
 		// draw dmg

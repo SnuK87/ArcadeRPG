@@ -62,9 +62,9 @@ public class CreateCharacterState extends BasicGameState
 		g.drawString("Class: ", 350, 350);
 		g.drawString(staticData.getClasses().get(choice), 420, 350);
 
-		btnNext.render(g);
-		btnOk.render(g);
-		btnCancel.render(g);
+		btnNext.render(g, container.getInput());
+		btnOk.render(g, container.getInput());
+		btnCancel.render(g, container.getInput());
 	}
 
 	@Override

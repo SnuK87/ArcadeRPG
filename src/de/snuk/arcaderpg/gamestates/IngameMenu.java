@@ -46,11 +46,11 @@ public class IngameMenu extends BasicGameState
 			final Graphics g) throws SlickException
 	{
 
-		btnSave.render(g);
-		btnLoad.render(g);
-		btnSettings.render(g);
-		btnExit.render(g);
-		btnBack.render(g);
+		btnSave.render(g, container.getInput());
+		btnLoad.render(g, container.getInput());
+		btnSettings.render(g, container.getInput());
+		btnExit.render(g, container.getInput());
+		btnBack.render(g, container.getInput());
 	}
 
 	@Override

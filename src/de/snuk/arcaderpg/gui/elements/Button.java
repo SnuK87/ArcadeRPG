@@ -4,6 +4,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Point;
 import org.newdawn.slick.geom.Rectangle;
@@ -52,12 +53,20 @@ public class Button
 		shape = new Rectangle(x, y, width, height);
 	}
 
-	public void render(final Graphics g) throws SlickException
+	public void render(final Graphics g, Input input) throws SlickException
 	{
 		g.drawImage(image, x, y);
-		g.setColor(Color.white);
+		
+		if(isClicked(input.getMouseX(), input.getMouseY())){
+			g.setColor(Color.red);			
+		}
+		else{
+			g.setColor(Color.white);
+		}
+		
 		g.drawString(text, (x + width / 2) - text.length() * 5, y
 				+ (height / 4));
+		g.setColor(Color.white);
 	}
 
 	public void update(final GameContainer container, final StateBasedGame sbg,
